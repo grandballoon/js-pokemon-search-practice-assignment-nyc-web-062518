@@ -6,16 +6,18 @@ console.log(pokemonContainer)
 
   searchField.addEventListener('keyup', (event) =>{
     let textInput = event.target.value
-    console.log(textInput)
+
     pokemonList =  findMatchingPokemon(textInput)
-    console.log(pokemonList)
+
     pokemonList.forEach(poke => render(poke))
+
   })
 
   function findMatchingPokemon(input){
     pokemonContainer.innerHTML = ""
-
+    if (input != ""){
     return pokemonArray.filter( pokemon => pokemon.name.includes(input))
+  }
   }
 
   function render(p){
@@ -24,7 +26,7 @@ console.log(pokemonContainer)
         <h1 class="center-text">${p.name}</h1>
         <div style="width:239px;margin:auto">
           <div style="width:96px;margin:auto">
-            <img src="${p.sprites["front"]}">
+            <img id= "${p.name}" src="${p.sprites["front"]}">
           </div>
         </div>
         <p style="padding:10px;" class="center-text flip-image" data-pokename="${p.name}" data-action="flip-image">flip card</p>
